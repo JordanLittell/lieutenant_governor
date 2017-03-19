@@ -71,7 +71,6 @@ console.log(url);
 
 
 Creating a nested URL
-Lieutenant governor creates the function name by appending model names in sequential order. The last model is pluralized.
 
 ```js
 // questions/:questions_id/answers/:answer_id/votes
