@@ -1,4 +1,4 @@
-require 'action_dispatch/routing'
+# require 'action_dispatch/routing'
 
 module LieutenantGovernor
   # singleton holding config for gem
