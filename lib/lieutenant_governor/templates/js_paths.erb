@@ -1,7 +1,7 @@
-export const STRING = 'string';
-export const PARAM = 'param';
+const STRING = 'string';
+const PARAM = 'param';
 
-export const makeFullURL = ({
+const makeFullURL = ({
   path = [],
   params = [],
   query = {},
@@ -27,8 +27,6 @@ const makePath = ({ path, params }) => {
   const numRequiredParams = path.reduce((acc, param) => {
     return acc + (param.type == PARAM);
   }, 0);
-
-  console.log(JSON.stringify(params))
 
   if(params.length !== numRequiredParams) {
     throw `${params.length} params given, but ${numRequiredParams} are required`;
@@ -88,3 +86,38 @@ const makeQueryStrings = a => {
 
   return buildParams('', a).join('&');
 };
+
+<% @routes.each do |name, path| %>
+
+  const <%= "#{name}Path" %> = [
+  <% path.split('/').each_with_index do |frag, idx| %>
+
+    <% if frag[0] == ':' %>
+      {
+        type: PARAM
+      }
+    <% else %>
+    {
+      type: STRING,
+      name: <%= frag %>
+    }
+    <% end %>
+
+    <% if idx < path.split('/').count %>
+      ,
+    <% end %>
+
+  ];
+
+  export function <%= "#{name}" %>({ // pluralized model name
+    params = [], // params must be given in order inserted
+    query = {},
+  } = {}) {
+
+    return makeFullURL({
+      path: <%= "#{name}Path" %>,
+      params,
+      query,
+    });
+  }
+<% end %>
