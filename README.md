@@ -24,8 +24,6 @@ Or install it yourself as:
 
 Creating a basic url
 
-``` questions/:questions_id ```
-
 ```js
 // questions/:questions_id
 
