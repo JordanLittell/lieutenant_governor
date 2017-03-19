@@ -29,7 +29,7 @@ Creating a basic URL
 ```js
 // questions/:questions_id
 
-import { paths } from 'paths';
+import * as paths from 'paths';
 
 // questions function is created and exported by lieutenant governor
 const url = paths.questions({
@@ -51,7 +51,7 @@ Creating a URL with query strings appended
 ```js
 // questions/:questions_id
 
-import { paths } from 'paths';
+import * as paths from 'paths';
 
 const url = paths.questions({
 
@@ -75,7 +75,7 @@ Creating a nested URL
 ```js
 // questions/:questions_id/answers/:answer_id/votes
 
-import { paths } from 'paths';
+import * as paths from 'paths';
 
 const url = paths.questionAnswerVotes({
 
