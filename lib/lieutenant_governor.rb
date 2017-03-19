@@ -1,11 +1,11 @@
-require "lieutenant_governor/version"
-require 'lieutenant_governor/generators/js_route_helpers'
+require_relative "lieutenant_governor/version"
+require_relative 'lieutenant_governor/generators/js_route_helpers'
 
 module LieutenantGovernor
 
   class Generator
-    def self.generate
-      Generators::JsRouteHelpers.generate_paths_file
+    def self.generate(path)
+      Generators::JsRouteHelpers.generate_paths_file(path)
     end
   end
 
