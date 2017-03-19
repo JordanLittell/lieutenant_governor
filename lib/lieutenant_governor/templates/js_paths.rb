@@ -4,14 +4,15 @@ module LieutenantGovernor
   module Templates
     class JsPaths
 
-      TEMPLATE_FILE = './js_paths.erb'
+      attr_reader :routes
 
       def initialize(routes)
         @routes = routes
       end
 
       def render
-        ERB.new(File.read(filename)).result binding
+        b = binding
+        ERB.new(LieutenantGovernor::Templates::JS_PATHS_TEMPLATE_STR).result b
       end
     end
   end

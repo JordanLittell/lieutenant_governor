@@ -6,17 +6,33 @@ module LieutenantGovernor
 
     class Extractor
 
-      attr_reader :route_table
+      attr_reader :routes
 
       # Takes applications routes and converts to hash
       # @param [ActionDispatch::Routing::RouteSet]
       # @return [Hash] table mapping names to paths
       def self.extract(routes)
+        instance = new(routes)
+        instance.extract
+      end
+
+      def initialize(routes)
+        @routes = routes
+      end
+
+      def extract
         table = {}
         # possible to get blank strings as keys here
-        routes.reduce(table) { |memo, obj| table[get_name(obj)] = get_path(obj) }
+        routes.reduce(table) do |memo, obj|
+          name = get_name(obj)
+          path = get_path(obj)
+          table[name] = path if name.present? && path.present?
+        end
+
         table
       end
+
+      private
 
       # @param [ActionDispatch::Routing::Journey]
       def get_name(obj)
