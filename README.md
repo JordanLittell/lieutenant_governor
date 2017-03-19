@@ -100,7 +100,7 @@ paths#urlName({
 });
 ```
 
-Prop                 | Type      | Description
+Key                  | Type      | Description
 -------------------- | --------- | -----------
 `params`             | `array`   | Params to be used in the url. Length must equal count of params expected in url.
 `query`              | `object`  | Query strings to be appended to the url
