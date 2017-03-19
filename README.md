@@ -1,6 +1,6 @@
 # Lieutenant Governor
 
-**Project Objective**: To make it simple to define your endpoints once in your ```routes.rb``` file and have them automatically generated for use on the client.
+**Objective**: A rails gem to make it simple to define your endpoints once in your ```routes.rb``` file and have them automatically generated for use on the client.
 
 
 ## Installation
@@ -18,6 +18,8 @@ And then execute:
 Or install it yourself as:
 
     $ gem install lieutenant_governor
+    
+
     
 
 ## Example Usage
@@ -92,6 +94,17 @@ console.log(url);
 ```
 
 ## API
+
+Lieutentant governor parses ```routes.rb``` and  generates client side functions to create paths
+
+Route                   | Controller Method      | Generated Function
+----------------------- | ---------------------- | -----------
+`/api/answer`           | `api_answer`   | paths.apiAnswer
+`/api/answers`          | `api_answers`  | paths.apiAnswers
+`/api/questions/:question_id/answers`              | `api_question_answers`  | paths.questionsAnswers
+
+
+When creating the path, the function takes an object so that the developer can specify params and query strings
 
 ```js
 paths#urlName({ 
