@@ -1,6 +1,6 @@
 # Lieutenant Governor
 
-**Project Objective**: To make it simple to define your endpoints once in your ```routes.rb``` file and have them automatically generated for use on the client.
+**Objective**: A rails gem to make it simple to define your endpoints once in your ```routes.rb``` file and have them automatically generated for use on the client.
 
 
 ## Installation
@@ -20,12 +20,16 @@ Or install it yourself as:
     $ gem install lieutenant_governor
     
 
-## API
+    
+
+## Example Usage
 
 Creating a basic URL
 
 ```js
 // questions/:questions_id
+
+import { paths } from 'paths';
 
 // questions function is created and exported by lieutenant governor
 const url = paths.questions({
@@ -47,6 +51,8 @@ Creating a URL with query strings appended
 ```js
 // questions/:questions_id
 
+import { paths } from 'paths';
+
 const url = paths.questions({
 
   params: [ 1 ],
@@ -65,10 +71,11 @@ console.log(url);
 
 
 Creating a nested URL
-Lieutenant governor creates the function name by appending model names in sequential order. The last model is pluralized.
 
 ```js
 // questions/:questions_id/answers/:answer_id/votes
+
+import { paths } from 'paths';
 
 const url = paths.questionAnswerVotes({
 
@@ -84,6 +91,32 @@ console.log(url);
 // questions/1/answers/abc/votes?firstName=Fred&lastName=Flintstone
 
 ```
+
+## API
+
+Lieutentant governor parses ```routes.rb``` and  generates client side functions to create paths
+
+Route                   | Controller Method      | Generated Function
+----------------------- | ---------------------- | -----------
+`/api/answer`           | `api_answer`   | paths.apiAnswer
+`/api/answers`          | `api_answers`  | paths.apiAnswers
+`/api/questions/:question_id/answers`              | `api_question_answers`  | paths.apiQuestionAnswers
+
+
+
+When creating the path, the function takes an object so that the developer can specify params and query strings
+
+```js
+paths#generatedFunction({ 
+   params: [],
+   query: {},
+});
+```
+
+Key                  | Type      | Description
+-------------------- | --------- | -----------
+`params`             | `array`   | Params to be used in the url. Length must equal count of params expected in url.
+`query`              | `object`  | Query strings to be appended to the url
 
 
 ## Requirements
