@@ -27,6 +27,8 @@ Creating a basic URL
 ```js
 // questions/:questions_id
 
+import { paths } from 'paths';
+
 // questions function is created and exported by lieutenant governor
 const url = paths.questions({
 
@@ -46,6 +48,8 @@ Creating a URL with query strings appended
 
 ```js
 // questions/:questions_id
+
+import { paths } from 'paths';
 
 const url = paths.questions({
 
@@ -70,6 +74,8 @@ Lieutenant governor creates the function name by appending model names in sequen
 ```js
 // questions/:questions_id/answers/:answer_id/votes
 
+import { paths } from 'paths';
+
 const url = paths.questionAnswerVotes({
 
   params: [ 1, 'abc' ],
@@ -84,6 +90,20 @@ console.log(url);
 // questions/1/answers/abc/votes?firstName=Fred&lastName=Flintstone
 
 ```
+
+## API
+
+```js
+paths#urlName({ 
+   params: [],
+   query: {},
+});
+```
+
+Prop                 | Type      | Description
+-------------------- | --------- | -----------
+`params`             | `array`   | Params to be used in the url. Length must equal count of params expected in url.
+`query`              | `object`  | Query strings to be appended to the url
 
 
 ## Requirements
