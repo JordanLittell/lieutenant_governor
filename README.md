@@ -1,8 +1,7 @@
-# LieutenantGovernor
+# Lieutenant Governor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lieutenant_governor`. To experiment with that code, run `bin/console` for an interactive prompt.
+**Project Objective**: To make it simple to define your endpoints once in your ```routes.rb``` file and have them automatically generated for use on the client.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -19,10 +18,37 @@ And then execute:
 Or install it yourself as:
 
     $ gem install lieutenant_governor
+    
 
-## Usage
+## API
 
-TODO: Write usage instructions here
+Creating a basic url
+
+``` questions/:questions_id ```
+
+```js
+// questions/:questions_id
+
+// Create a url with query strings appended
+const url = paths.questions({
+
+  // params to be used in the url
+  // number of params must match number in url
+  params: [ 1 ],
+  
+  // query strings to be appended to the url
+  query: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+});
+
+console.log(url);
+// questions/1?firstName=Fred&lastName=Flintstone
+
+```
+
+
 
 ## Development
 
