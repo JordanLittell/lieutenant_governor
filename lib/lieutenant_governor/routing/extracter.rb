@@ -11,13 +11,7 @@ module LieutenantGovernor
       # Takes applications routes and converts to hash
       # @param [ActionDispatch::Routing::RouteSet]
       # @return [Hash] table mapping names to paths
-      def initialize(routes)
-        @route_table = extract(routes)
-      end
-
-      # @param [ActionDispatch::Routing::RouteSet]
-      # iterates through routes and maps name (model data) to path
-      def extract(routes)
+      def self.extract(routes)
         table = {}
         # possible to get blank strings as keys here
         routes.reduce(table) { |memo, obj| table[get_name(obj)] = get_path(obj) }
