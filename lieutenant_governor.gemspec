@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.bindir        = "exe"
-  spec.executables   = ["governor"]
+  spec.executables   = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   # spec.add_dependency "actionpack"
