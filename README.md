@@ -101,7 +101,7 @@ Route                   | Controller Method      | Generated Function
 ----------------------- | ---------------------- | -----------
 `/api/answer`           | `api_answer`   | paths.apiAnswer
 `/api/answers`          | `api_answers`  | paths.apiAnswers
-`/api/questions/:question_id/answers`              | `api_question_answers`  | paths.questionsAnswers
+`/api/questions/:question_id/answers`              | `api_question_answers`  | paths.questionAnswers
 
 
 When creating the path, the function takes an object so that the developer can specify params and query strings
