@@ -108,7 +108,7 @@ Route                   | Controller Method      | Generated Function
 When creating the path, the function takes an object so that the developer can specify params and query strings
 
 ```js
-paths#urlName({ 
+paths#generatedFunction({ 
    params: [],
    query: {},
 });
