@@ -20,7 +20,7 @@ Or install it yourself as:
     $ gem install lieutenant_governor
     
 
-## API
+## Example Usage
 
 Creating a basic URL
 
