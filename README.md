@@ -22,16 +22,33 @@ Or install it yourself as:
 
 ## API
 
-Creating a basic url
+Creating a basic URL
 
 ```js
 // questions/:questions_id
 
-// Create a url with query strings appended
+// questions function is created and exported by lieutenant governor
 const url = paths.questions({
 
   // params to be used in the url
   // number of params must match number in url
+  params: [ 1 ],
+  
+});
+
+console.log(url);
+// questions/1
+
+```
+
+
+Creating a URL with query strings appended
+
+```js
+// questions/:questions_id
+
+const url = paths.questions({
+
   params: [ 1 ],
   
   // query strings to be appended to the url
@@ -43,6 +60,28 @@ const url = paths.questions({
 
 console.log(url);
 // questions/1?firstName=Fred&lastName=Flintstone
+
+```
+
+
+Creating a nested URL
+Lieutenant governor creates the function name by appending model names in sequential order. The last model is pluralized.
+
+```js
+// questions/:questions_id/answers/:answer_id/votes
+
+const url = paths.questionAnswerVotes({
+
+  params: [ 1, 'abc' ],
+  
+  query: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+});
+
+console.log(url);
+// questions/1/answers/abc/votes?firstName=Fred&lastName=Flintstone
 
 ```
 
