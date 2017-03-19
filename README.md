@@ -86,6 +86,10 @@ console.log(url);
 ```
 
 
+## Requirements
+
+1. Build system must support transpiling ES6
+
 
 ## Development
 
