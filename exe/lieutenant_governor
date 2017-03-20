@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby -U
 require 'thor'
 require_relative '../lib/lieutenant_governor'
 
