@@ -27,8 +27,6 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
 
-  spec.bindir        = "exe"
-  spec.executables   = ['lieutenant_governor']
   spec.require_paths = ["lib"]
 
   # spec.add_dependency "actionpack"

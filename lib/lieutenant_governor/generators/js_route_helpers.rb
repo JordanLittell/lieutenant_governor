@@ -13,8 +13,7 @@ module LieutenantGovernor
       # using Thor, open up a file, and then write the javascript text to
       # the file
 
-      def self.generate_paths_file(path='./app/assets/javascripts/pathHelpers.js')
-
+      def self.generate_paths_file(path='app/assets/javascripts/pathHelpers.js')
         routes = Rails.application.routes.routes
         route_table = LieutenantGovernor::Routing::Extractor.extract(routes)
         template = LieutenantGovernor::Templates::JsPaths.new(route_table)
