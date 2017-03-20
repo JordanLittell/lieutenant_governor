@@ -19,7 +19,7 @@ Or install it yourself as:
 
     $ gem install lieutenant_governor
     
-In the initialization of your app, invoke the generator:
+In the initialization of your app (ex. `config/initializers/lieutenant_governor.rb` ), invoke the generator:
     
     $ LieutenantGovernor::Generator.generate(path_to_js_helper)
 
