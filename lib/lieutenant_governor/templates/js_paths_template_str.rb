@@ -4,7 +4,6 @@ module LieutenantGovernor
     %{
 const STRING = 'string';
 const PARAM = 'param';
-const path;
 
 const makeFullURL = ({
   path = [],
@@ -12,16 +11,20 @@ const makeFullURL = ({
   query = {},
 } = {}) => {
 
-  path = makePath({
+  const requestPath = makeRequestPath({
     path,
     params,
   });
   const queryStrings = makeQueryStrings(query);
-  return queryStrings.length > 0 ? `${path}?${queryStrings}`:path;
+  return queryStrings.length > 0
+  ? `${requestPath}?${queryStrings}`
+  :requestPath;
 }
 
-const makePath = ({ path, params }) => {
-  const isArray = obj => Object.prototype.toString.call(obj) === '[object Array]';
+const makeRequestPath = ({ path, params }) => {
+  const isArray = obj => {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+  }
 
   if(!isArray(params)) {
     throw 'params argument must of type array';
@@ -32,7 +35,7 @@ const makePath = ({ path, params }) => {
   }, 0);
 
   if(params.length !== numRequiredParams) {
-    throw `${params.length} params given, but ${numRequiredParams} are required`;
+    throw `params: ${params.length} given, but ${numRequiredParams} required`;
   }
 
   let numUsedParams = 0;
@@ -48,11 +51,15 @@ const makePath = ({ path, params }) => {
 
 const makeQueryStrings = a => {
   const s = [];
-  const rbracket = /\[\]$/;
-  const isArray = obj => Object.prototype.toString.call(obj) === '[object Array]';
+  const rbracket = /\\[\\]$/;
+  const isArray = obj => {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+  }
 
   const add = (k, v) => {
-      v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
+      v = typeof v === 'function'
+      ? v()
+      : v === null ? '' : v === undefined ? '' : v;
       s[s.length] = `${encodeURIComponent(k)}=${encodeURIComponent(v)}`;
     };
 
@@ -65,7 +72,10 @@ const makeQueryStrings = a => {
             if (rbracket.test(prefix)) {
               add(prefix, obj[i]);
             } else {
-              buildParams(`${prefix}[${typeof obj[i] === 'object' ? i : ''}]`, obj[i]);
+              buildParams(
+                `${prefix}[${typeof obj[i] === 'object' ? i : ''}]`,
+                obj[i]
+              );
             }
           }
         } else if (obj && String(obj) === '[object Object]') {
