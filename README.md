@@ -18,14 +18,17 @@ And then execute:
 Or install it yourself as:
 
     $ gem install lieutenant_governor
-    
-In the initialization of your app (ex. `config/initializers/lieutenant_governor.rb` ), invoke the generator:
-    
-    $ LieutenantGovernor::Generator.generate(path_to_js_helper)
 
-The path_to_js_helper is a required param that specifies the location of the generated helper.
+The lieutenant_governor gem uses your applications routes to construct a javascript module for making requests to the server. Hence, the routes need to be loaded before you invoke the generate method like so:
 
-    
+```ruby
+config.after_initialize do
+    Rails.application.reload_routes!
+    LieutenantGovernor::Generator.generate(path_to_js_helper) #path_to_js_helper is a string 
+    #to the desired location of the JS module that gets generated.
+end
+```
+We recommend doing this in `config/environments/development.rb`
 
 ## Example Usage
 
