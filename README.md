@@ -24,8 +24,9 @@ The lieutenant_governor gem uses your applications routes to construct a javascr
 ```ruby
 config.after_initialize do
     Rails.application.reload_routes!
-    LieutenantGovernor::Generator.generate(path_to_js_helper) #path_to_js_helper is a string 
-    #to the desired location of the JS module that gets generated.
+    LieutenantGovernor::Generator.generate(path_to_js_helper) 
+    # path_to_js_helper is a string 
+    # to the desired location of the JS module that gets generated.
 end
 ```
 We recommend doing this in `config/environments/development.rb`
