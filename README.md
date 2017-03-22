@@ -134,6 +134,16 @@ Key                  | Type      | Description
 
 1. Build system must support transpiling ES6
 
+## Contributing
+If you choose to help us further develop and improve Lieutenant Governor, then you are awesome. To do this, first checkout the master branch. Then create a new branch off of master with the corresponding issue number: 
+
+        $ git checkout -b ISSUE-209
+        
+Perform the work you wish to do locally and then create a remote branch like so: 
+        
+        $ git push origin ISSUE-209
+        
+Then go into github and open up a PR request. When you first open up your PR, the travis build will kick off. If the build passes, then you are required to get a review from an admin. If the admin approves, then your PR will be mergable. 
 
 ## Development
 
