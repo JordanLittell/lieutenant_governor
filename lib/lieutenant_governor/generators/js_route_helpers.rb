@@ -6,6 +6,7 @@ require_relative '../templates/js_paths_template_str'
 module LieutenantGovernor
 
   module Generators
+    
     class JsRouteHelpers < Thor::Group
       extend Thor::Actions
       # Use the extractor to get the hash
@@ -13,7 +14,8 @@ module LieutenantGovernor
       # using Thor, open up a file, and then write the javascript text to
       # the file
 
-      def self.generate_paths_file(path='app/assets/javascripts/pathHelpers.js')
+      def self.generate_paths_file(path)
+        raise TypeError('Path must be String.') unless path.class == String
         routes = Rails.application.routes.routes
         route_table = LieutenantGovernor::Routing::Extractor.extract(routes)
         template = LieutenantGovernor::Templates::JsPaths.new(route_table)
