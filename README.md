@@ -1,4 +1,5 @@
 # Lieutenant Governor
+https://travis-ci.org/JordanLittell/lieutenant_governor/builds/213709212
 
 **Objective**: A rails gem to make it simple to define your endpoints once in your ```routes.rb``` file and have them automatically generated for use on the client.
 
