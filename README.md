@@ -134,6 +134,15 @@ Key                  | Type      | Description
 
 1. Build system must support transpiling ES6
 
+## Contributing
+If you choose to help us further develop and improve Lieutenant Governor then you are awesome. To do this, first checkout the master branch. Then create a new branch off of master with the corresponding issue number: 
+
+        $ git checkout -b ISSUE-209
+Perform the work you wish to do locally and then create a remote branch like so: 
+        
+        $ git push origin ISSUE-209
+        
+Then go into github and open up a PR request. Make sure to briefly summarize the issue and then one of the admins will get to reviewing your work.
 
 ## Development
 
