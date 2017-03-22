@@ -26,7 +26,7 @@ module LieutenantGovernor
         routes.reduce(table) do |memo, obj|
           name = get_name(obj)
           path = get_path(obj)
-          table[name] = path if name.present? && path.present?
+          table[name] = path if name.length > 0 && path.length > 0
         end
 
         table
